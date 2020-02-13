@@ -36,8 +36,8 @@ def pretty_items(r, d, nametag="<strong>%s: </strong>", itemtag='<li>%s</li>\n',
 
 
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ("comment", "url", "screenshot_thumb", "user", "email", "created", "ack")
-    list_filter = ("created", "ack", "user", "url")
+    list_display = ("comment", "url", "screenshot_thumb", "user", "email", "created", "priority", "ack")
+    list_filter = ("created", "priority", "ack", "user", "url")
     search_fields = ("comment", "user__email", "user__name")
     readonly_fields = ("comment", "url", "user", "browser_html", "screenshot_thumb")
     exclude = ('browser', 'screenshot')
@@ -61,9 +61,9 @@ class FeedbackAdmin(admin.ModelAdmin):
     def screenshot_thumb(self, feedback):
         if feedback.screenshot:
             if django.VERSION[0] < 2:
-                return u'<a href="%s" ><img src="%s" width="100"/></a>' % (feedback.screenshot.url, feedback.screenshot.url)
+                return u'<a href="%s"><img src="%s" width="100"/></a>' % (feedback.screenshot.url, feedback.screenshot.url)
             else:
-                return mark_safe(u'<a href="%s" ><img src="%s" width="100"/></a>' % (feedback.screenshot.url, feedback.screenshot.url))
+                return mark_safe(u'<a href="%s"><img src="%s" width="100"/></a>' % (feedback.screenshot.url, feedback.screenshot.url))
 
     screenshot_thumb.allow_tags = True
     screenshot_thumb.short_description = _("Screenshot")
