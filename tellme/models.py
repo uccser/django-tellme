@@ -5,18 +5,20 @@ from django.dispatch.dispatcher import receiver
 from django.utils.translation import ugettext_lazy as _
 from six import python_2_unicode_compatible
 
-PRIORITY_HIGH  = "H"
-PRIORITY_NORM  = "N"
-PRIORITY_LOW   = "L"
-PRIORITY_FLOOR = "F"
-PRIORITY_NONE  = "-"
+PRIORITY_URGENT = "U"
+PRIORITY_HIGH   = "H"
+PRIORITY_NORMAL = "N"
+PRIORITY_LOW    = "L"
+PRIORITY_FLOOR  = "F"
+PRIORITY_NONE   = "-"
 
 PRIORITY_CHOICES = (
-    (PRIORITY_HIGH,  "High"),
-    (PRIORITY_NORM,  "Normal"),
-    (PRIORITY_LOW,   "Low"),
-    (PRIORITY_FLOOR, "Floor"),
-    (PRIORITY_NONE,  "Unassigned")
+    (PRIORITY_URGENT, "Urgent"),
+    (PRIORITY_HIGH,   "High"),
+    (PRIORITY_NORMAL, "Normal"),
+    (PRIORITY_LOW,    "Low"),
+    (PRIORITY_FLOOR,  "Floor"),
+    (PRIORITY_NONE,   "Unassigned")
 )
 
 
